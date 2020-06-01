@@ -5,14 +5,16 @@ import { productListReducer, productDetailsReducer } from './reducers/productRed
 import { cartReducer } from './reducers/cartReducers';
 import { userSigninReducer } from './reducers/userReducers'
 
-const cartItems = Cookie.getJSON("cartItems") || []
+const cartItems = Cookie.getJSON("cartItems") || [];
+const userInfo = Cookie.getJSON("userInfo") || null;
 
-const initialState = {cart: {cartItems}};
+const initialState = {cart: {cartItems}, userSignin: {userInfo}};
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
-    userSingin: userSigninReducer
+    userSignin: userSigninReducer,
+    userRegister: userSigninReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
